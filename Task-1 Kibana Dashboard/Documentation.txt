@@ -1,0 +1,32 @@
+About Kibana Dashboard:
+
+- Kibana is an open-source data visualization and exploration tool used mainly with Elasticsearch.
+- A Kibana dashboard is a collection of visualizations, searches, and interactive elements that help users analyze and monitor their data.
+
+Key Features of a Kibana Dashboard:
+
+- Data Visualization: Supports various charts (bar, pie, line, heatmaps, etc.), tables, and maps.
+- Real-time Monitoring: Useful for tracking live logs, metrics, and trends.
+- Filtering & Drill-down: Users can apply filters, use search queries, and drill down into data for deep analysis.
+- Integration with Elasticsearch: Fetches and analyzes log data, application metrics, security analytics, etc.
+- Customizable Layouts: Users can arrange and resize visual elements as needed.
+
+What is ELK stack ?
+
+ELK stack consists of 3 components namely,
+E => Elasticsearch (highly scalable search index server)
+L => Logstash (Tool for collection, enrichment, filtering, and forwarding of data)
+K => Kibana (Tool for exploration and visualization of data)
+
+
+Steps :
+
+1. Download the ELK stack from their official website 
+2. Unzip the files and folders to extract the app and get started
+3. Start the elasticsearch server using the .bat file
+4. We should be able to see JSON data about our server cluster
+5. After that perform same steps for both kibana and logstash
+6. Add a csv file for the dashboard building e.g (NewYork Airbnb Data) and create a logstash.conf file for it
+7. Then create the dashboard on Kibana based on the sample data
+
+
