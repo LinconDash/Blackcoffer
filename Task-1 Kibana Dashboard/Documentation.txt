@@ -21,12 +21,97 @@ K => Kibana (Tool for exploration and visualization of data)
 
 Steps :
 
-1. Download the ELK stack from their official website 
+1. Download the ELK stack from their official Ibsite 
 2. Unzip the files and folders to extract the app and get started
 3. Start the elasticsearch server using the .bat file
-4. We should be able to see JSON data about our server cluster
+4. I should be able to see JSON data about our server cluster
 5. After that perform same steps for both kibana and logstash
 6. Add a csv file for the dashboard building e.g (NewYork Airbnb Data) and create a logstash.conf file for it
 7. Then create the dashboard on Kibana based on the sample data
+
+Workflow :
+
+The ELK stack consisting of 3 things works as follows :
+1. Logstash is used as a data collecting agent that collects data from heterogeneous sources and can be used to transform, filter out data from the data sources.
+2. Then after setting up the logstash I can store our data or index it using elastic search which can be used for graphical visualization for different kinds of data like performance data, log tracking data, etc.
+3. After storing the data in elasticsearch, I can create an index pattern and data view of it so that it can be used for data visualization purposes, for which kibana is used 
+
+About data :
+Sample Dataset chosen : New York Airbnb listings
+This dataset consists of 48,895 rows and 16 columns, and it is an Airbnb listings dataset. Airbnb of New York are listed in this dataset.
+Below is a detailed explanation of each column:
+
+1. id - Unique identifier for each listing.
+2. name - Name or title of the Airbnb listing.
+3. host_id	- Unique identifier for the host.
+4. host_name	object	Name of the host (may contain missing values).
+5. neighbourhood_group - Broad area where the listing is located (e.g., Brooklyn, Manhattan).
+6. neighbourhood - Specific neighborhood of the listing.
+7. latitude - Latitude coordinate of the listing (for geolocation).
+8. longitude - Longitude coordinate of the listing (for geolocation).
+9. room_type - Type of room offered (e.g., Entire home/apt, Private room, Shared room).
+10. price - Price per night in USD.
+11. minimum_nights - Minimum number of nights required for booking.
+12. number_of_reviews - Total number of reviews received.
+13. last_review - Date of the most recent review (contains missing values).
+14. reviews_per_month - Average number of reviews per month (contains missing values).
+15. calculated_host_listings_count - Number of listings owned by the host.
+16. availability_365 - Number of days the listing is available per year (out of 365).
+
+
+About Dashboard : 
+
+The Airbnb data is loaded into the elasticseach using the logstash and then kibana is used to create the dashboard that has some basic visualizations. The steps are 
+explained in details as follows : 
+
+Step 1: Loading Data into Elasticsearch using Logstash
+Since the dataset was in a CSV format (train.csv), I used Logstash to ingest it into Elasticsearch for indexing and further visualization in Kibana.
+
+1.1 Logstash Configuration File (logstash.conf)
+
+I created a Logstash configuration file (logstash.conf) to define:
+
+1. The input (CSV file source).
+2. The filter (data transformations, if needed).
+3. The output (Elasticsearch index where data is stored).
+
+1.2 Running Logstash
+After setting up the configuration file, I ran the following command to start Logstash:
+command -> logstash -f logstash.conf
+
+This processed the CSV file and loaded the data into the "ny_airbnb_data" index in Elasticsearch.
+
+Step 2: Building the Dashboard in Kibana
+Once the data was successfully indexed, I used Kibana to visualize it.
+
+2.1 Setting Up the Index Pattern
+
+1. Open Kibana (http://localhost:5601).
+2. Navigate to "Stack Management" -> "Index Patterns".
+4. Click "Create Index Pattern" and enter airbnb_listings.
+5. Select the time field (last_review) if needed.
+6. Click "Create".
+
+2.2 Creating Visualizations
+With the index loaded, I built various visualizations using Kibana's Lens and Visual Builder.
+Since it was a demo dashboard, I only created very few visuals related to the data and few controls / filters related to it, which are as follows :
+
+Controls : 
+
+1. Select Room Type : This can be used to control the data shown in the visualizations according to the room type selected in the control
+2. Select City : This controls the data according to the city in New-York selected.
+3. Select Neighborhood : This controls the data according to the neighborhood selected.
+
+Visualizations : 
+
+There are visualizations that include :
+
+Metrics : such as total no. of Airbnb listings of newyork, top 5 cities having majority of unique Airbnb listings, top 4 host names hosting most no. of Airbnb places.
+Bar chart 1 : shows the total no. of Airbnb present in newyork by room type : private / shared / entire home or apartment
+Bar chart 2 : shows top 5 airbnb places where majority of the sites are present
+
+
+
+
 
 
