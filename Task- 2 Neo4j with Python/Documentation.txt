@@ -1,0 +1,61 @@
+What is Neo4j ?
+
+Neo4j is a native graph database, which means that it implements a true graph model all the way down to the storage level.
+Instead of using a "graph abstraction" on top of another technology, the data is stored in Neo4j in the same way you may whiteboard your ideas.
+
+What is a graph database ?
+
+A Neo4j graph database stores data as nodes, relationships, and properties instead of in tables or documents.
+This means you can organize your data in a similar way as when sketching ideas on a whiteboard.
+And since graph databases are not restricted to a pre-defined model, you can take more flexible approaches and strategies when working with them.
+
+How it works ?
+
+Graph databases are structured through nodes and relationships.
+
+- Nodes are entities in the graph which can:
+
+1. Be tagged with labels representing their different roles in a domain (e.g., Person).
+2. Hold any number of key-value pairs as properties (e.g., name).
+3. Be indexed and bound by constraints (similar to relational databases).
+
+- Relationships provide named connections between two nodes (e.g., Person - DRIVES - Vehicle) and they:
+
+1. Must always have a start node, an end node, and exactly one type.
+2. Must have a direction.
+3. Can have properties, like nodes.
+
+Nodes can have multiple relationships of various types without sacrificing performance.
+
+Why graph databases are used ?
+- In relational databases, references to other rows and tables are indicated by referring to primary key attributes via foreign key columns.
+- Joins are computed at query time by matching primary and foreign keys of all rows in the connected tables. 
+- These operations are compute-heavy and memory-intensive and have an exponential cost.
+- When many-to-many relationships occur in the model, you must introduce a JOIN table (or associative entity table) that holds 
+  foreign keys of both the participating tables, further increasing join operation costs.
+
+This is how graph databases were born. They were designed to provide the greatest advantage in the connected world we live in today.
+
+Cypher Query :
+Cypher, Neo4j’s declarative graph query language, is built on the basic concepts and clauses of SQL but has a lot of additional 
+graph-specific functionality to make it easy to work with your graph model.
+
+SQL STATEMENT :
+SELECT name FROM Person
+LEFT JOIN Person_Department
+  ON Person.Id = Person_Department.PersonId
+LEFT JOIN Department
+  ON Department.Id = Person_Department.DepartmentId
+WHERE Department.name = "IT Department"
+
+CYPHER STATEMENT:
+MATCH (p:Person)-[:WORKS_AT]->(d:Dept)
+WHERE d.name = "IT Department"
+RETURN p.name
+
+About the Task :
+
+I have created a simple example of how Instagram data might look-like in a graph database 
+where we have a Node as Person with only one property as its name and one type of relationship i.e FOLLOWS
+Ex : Ram follows Shyam 
+
