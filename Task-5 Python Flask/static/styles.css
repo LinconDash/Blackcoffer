@@ -1,0 +1,27 @@
+body {
+    background: linear-gradient(135deg, #79fcbf, #499092);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
+.container {
+    max-width: 500px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #b1ffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+span {
+    color: #0093c0;
+}
